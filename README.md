@@ -49,7 +49,7 @@ We thank the author for sharing.
 ## Citation
 If you find this work is useful in your research, please cite our paper:
 ```
-@inproceedings{zhang2022improving,
+@inproceedings{TRMUAP_2023,
   title={TRM-UAP: Enhancing the Transferability of Data-Free Universal Adversarial Perturbation via Truncated Ratio Maximization},
   author={Yiran Liu, Xin Feng, Yunlong Wang, Wu Yang, Di Ming},
   booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
