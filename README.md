@@ -7,9 +7,9 @@ This code depends on PyTorch.
 
 This repo is tested with pytorch<=1.12.0, python<=3.6.13.
 Install all python packages using following command:
-'''
+```
 pip install -r requirements.txt
-'''
+```
 
 ## Usage Instructions
 
