@@ -16,7 +16,7 @@ pip install -r requirements.txt
 ### 1. Preparation
 
 ImageNet validation set:
-   Load the parameters of pretrained models with PyTorch, download ImageNet dataset from (https://image-net.org/challenges/LSVRC/2012/2012-downloads.php).
+   Load the parameters of pretrained models with PyTorch, download ImageNet dataset from [here](https://image-net.org/challenges/LSVRC/2012/2012-downloads.php).
 - `TorchHub` : the directory saves PyTorch pretrained model parameters.
 - `dataset` : the directory contains the datasets.
 - `perturbations` : the directory stores the UAP crafted by universal attacks. 
