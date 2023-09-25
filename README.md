@@ -43,9 +43,9 @@ This will load the UAP made by vgg16 from `perturbations` and attack the target 
 
 
 ## Acknowledgements
-The code refers to [pytorch-gd-uap](https://github.com/psandovalsegura/pytorch-gd-uap)
+The code refers to [pytorch-gd-uap](https://github.com/psandovalsegura/pytorch-gd-uap).
 
-We thank the author for sharing.
+We thank the author for sharing sincerely.
 
 ## Citation
 If you find this work is useful in your research, please cite our paper:
