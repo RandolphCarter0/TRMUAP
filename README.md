@@ -1,7 +1,7 @@
 # Truncated Ratio Maximization UAP
 [[Paper]](https://iccv2023.thecvf.com/main.conference.program-107.php) [[Poster]](https://drive.google.com/file/d/16ljA-MjlF8dHHp5NVcHUtUjFX1u7HI8B/view) [[Presentation]](https://drive.google.com/file/d/16Rdu6pGuSuaK14H1MK7acxatkHMjj_oL/view)
 
-Code for the method **TRM-UAP: Enhancing the Transferability of Data-Free Universal Adversarial Perturbation via Truncated Ratio Maximization (ICCV2023)**. A universal attack to craft the universal adversarial perturbation(UAP) via truncated ratio maximization. This code depends on PyTorch.
+Code for the method **TRM-UAP: Enhancing the Transferability of Data-Free Universal Adversarial Perturbation via Truncated Ratio Maximization (ICCV2023)**. A universal attack to craft the universal adversarial perturbation (UAP) via truncated ratio maximization. This code depends on PyTorch.
 
 ## Dependencies
 
