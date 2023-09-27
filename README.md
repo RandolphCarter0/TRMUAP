@@ -1,7 +1,7 @@
 # Truncated Ratio Maximization UAP
-[[Paper]](https://openaccess.thecvf.com/content/ICCV2023/html/Liu_TRM-UAP_Enhancing_the_Transferability_of_Data-Free_Universal_Adversarial_Perturbation_via_ICCV_2023_paper.html) [[Poster]](https://drive.google.com/file/d/16ljA-MjlF8dHHp5NVcHUtUjFX1u7HI8B/view) [[Presentation]](https://drive.google.com/file/d/16Rdu6pGuSuaK14H1MK7acxatkHMjj_oL/view)
+[[Paper](https://openaccess.thecvf.com/content/ICCV2023/papers/Liu_TRM-UAP_Enhancing_the_Transferability_of_Data-Free_Universal_Adversarial_Perturbation_via_ICCV_2023_paper.pdf)] [[Supp](https://openaccess.thecvf.com/content/ICCV2023/supplemental/Liu_TRM-UAP_Enhancing_the_ICCV_2023_supplemental.pdf)] [[Poster](https://drive.google.com/file/d/16ljA-MjlF8dHHp5NVcHUtUjFX1u7HI8B/view)] [[Presentation](https://drive.google.com/file/d/16Rdu6pGuSuaK14H1MK7acxatkHMjj_oL/view)]
 
-Code for the method **TRM-UAP: Enhancing the Transferability of Data-Free Universal Adversarial Perturbation via Truncated Ratio Maximization (ICCV2023)**. A universal attack to craft the universal adversarial perturbation (UAP) via truncated ratio maximization. This code depends on PyTorch.
+Code for the method [**TRM-UAP: Enhancing the Transferability of Data-Free Universal Adversarial Perturbation via Truncated Ratio Maximization (ICCV2023)**](https://openaccess.thecvf.com/content/ICCV2023/html/Liu_TRM-UAP_Enhancing_the_Transferability_of_Data-Free_Universal_Adversarial_Perturbation_via_ICCV_2023_paper.html). A universal attack to craft the universal adversarial perturbation (UAP) via truncated ratio maximization. This code depends on PyTorch.
 
 ## Dependencies
 
@@ -43,9 +43,9 @@ This will load the UAP made by vgg16 from `perturbations` and attack the target 
 
 
 ## Acknowledgements
-The code refers to [pytorch-gd-uap](https://github.com/psandovalsegura/pytorch-gd-uap).
+The code refers to  [GD-UAP](https://github.com/val-iisc/GD-UAP/tree/master), [pytorch-gd-uap](https://github.com/psandovalsegura/pytorch-gd-uap).
 
-We thank the author for sharing sincerely.
+We thank the authors for sharing sincerely.
 
 ## Citation
 If you find this work is useful in your research, please cite our paper:
