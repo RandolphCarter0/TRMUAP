@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 from functions import *
 from skimage import filters
 from skimage.morphology import disk
-
+from strategy import *
 
 
 
@@ -198,23 +198,7 @@ def get_jigsaw(img,args,min=0,max=256,filter=False):
             img_batch = torch.cat([img_batch, ximg], dim=0)
     return img_batch
 
-def curriculum_strategy_gauss(iter,args):
-    if iter == 1600 or iter == 2400 or iter == 3200:
-        args.prior_batch = args.prior_batch * 2
-    if iter % args.gauss_t0 == 0 and args.std < 127:
-        args.std = args.std + args.gauss_gamma
-    if args.std > 127:
-        args.std = 127
-    return args.std
 
-def curriculum_strategy_jigsaw(iter,args):
-    if iter == 1600 or iter==3200:
-        args.prior_batch = args.prior_batch*2
-    if iter % args.jigsaw_t0 == 0 and iter < args.jigsaw_end_iter:
-        args.fre = args.fre + args.jigsaw_gamma
-
-
-    return args.fre
 
 
 def truncated_ratio_maximization(model, args, device, prior=False):
@@ -262,12 +246,22 @@ def truncated_ratio_maximization(model, args, device, prior=False):
 
 
             if prior == 'gauss':
-                args.std = curriculum_strategy_gauss(iter_num,args)
+
+                args = curriculum_strategy_gauss(iter_num,args)
                 random_batch = get_gauss_prior(args=args)
 
 
             elif prior == 'jigsaw':
-                args.fre = curriculum_strategy_jigsaw(iter_num,args)
+
+
+                if args.surrogate_model == 'resnet152':
+                    args = curriculum_strategy_jigsaw_resnet152(iter_num,args)
+                elif args.surrogate_model == 'googlenet':
+                    args = curriculum_strategy_jigsaw_googlenet(iter_num,args)
+                else:
+                    args = curriculum_strategy_jigsaw(iter_num,args)
+
+
                 random_batch = get_jigsaw(delta,args,filter=True)
 
 
