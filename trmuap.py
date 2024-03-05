@@ -69,7 +69,7 @@ def l2_layer_loss(model, delta,args,device):
         for i in range(truncate):
             ac_tensor = activations[i].view(-1)
             # activate the positve value like Relu
-            ac_tensor = torch.where(ac_tensor>0,ac_tensor,torch.zeros_like(ac_tensor))
+            ac_tensor = torch.where(ac_tensor > 0, ac_tensor, torch.zeros_like(ac_tensor))
             p_activations.append(ac_tensor)
 
         truncate = int(len(activations)* args.n_rate)
@@ -80,7 +80,7 @@ def l2_layer_loss(model, delta,args,device):
         for i in range(truncate):
             ac_tensor = activations[i].view(-1)
             # activate the negative value contrary to Relu
-            ac_tensor = torch.where(ac_tensor > 0, ac_tensor, torch.zeros_like(ac_tensor))
+            ac_tensor = torch.where(ac_tensor < 0, ac_tensor, torch.zeros_like(ac_tensor))
             deactivations.append(ac_tensor)
 
     else:
