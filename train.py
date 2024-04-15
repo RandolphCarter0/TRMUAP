@@ -45,7 +45,7 @@ def main():
                         help='the parameter of negative activation')
     parser.add_argument('--epsilon', default=10/255,
                         help='the infinite norm limitation of UAP')
-    parser.add_argument('--delta_size', default=32,
+    parser.add_argument('--delta_size', default=224,
                         help='the size of delta')
     parser.add_argument('--uap_lr', default=0.1,
                         help='the leraning rate of UAP')
