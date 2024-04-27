@@ -79,7 +79,7 @@ def main():
     #best set-up p_rate, n_rate, lambda, prior strategy in resnet152 and googlenet
     #resnet152 0.3 0.2 1.5 [jigsaw for resnet152]
     #googlnet 0.65 0.2 1.0 [jigsaw for googlenet]
-    #Note: Due to the random of artificial images, the result in the paper may be reproduced after repeated experiments with different seeds. 
+    #Note: Due to the randomness of artificial images, the results in our paper may be reproduced after conducting repeated experiments with different seeds. 
 
 
     args = parser.parse_args()
