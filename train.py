@@ -73,7 +73,7 @@ def main():
 
     #best set-up p_rate, n_rate, lambda, prior strategy t0 gamma in alexnet and vgg
     #alexnet 1.0,0.2,1.0, [gauss(std=10) 400,10]
-    #vgg16 0.8 0.7 1.0, [gauss(std=50) 400,2]
+    #vgg16 0.8 0.7 1.0, [gauss(std=10) 400,2]
     #vgg19 0.8 0.8 0.5, [gauss(std=10) 400,10]
 
     #best set-up p_rate, n_rate, lambda, prior strategy in resnet152 and googlenet
