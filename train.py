@@ -30,45 +30,45 @@ def main():
     parser.add_argument('--val_dataset_name', default='imagenet',choices=['imagenet'],
                         help='The dataset to be used as test')
 
-    parser.add_argument('--p_active', default=True, type=bool,
+    parser.add_argument('--p_active', action="store_true",
                         help='maximize the positive activation the conv layer')
     parser.add_argument('--p_rate', default=0.8, type=float,
                         help='positive proportion of conv layer used')
-    parser.add_argument('--n_active', default=True, type=bool,
+    parser.add_argument('--n_active', action="store_true",
                         help='minimize the negative activation the conv layer')
     parser.add_argument('--n_rate', default=0.8, type=float,
                         help='negative proportion of conv layer used(deactivation)')
 
-    parser.add_argument('--seed', default=123,
+    parser.add_argument('--seed', default=123, type=int,
                         help='random seed')
-    parser.add_argument('--lam', default=1,
+    parser.add_argument('--lam', default=1, type=float,
                         help='the parameter of negative activation')
-    parser.add_argument('--epsilon', default=10/255,
+    parser.add_argument('--epsilon', default=10/255, type=float,
                         help='the infinite norm limitation of UAP')
-    parser.add_argument('--delta_size', default=224,
+    parser.add_argument('--delta_size', default=224, type=int,
                         help='the size of delta')
-    parser.add_argument('--uap_lr', default=0.1,
+    parser.add_argument('--uap_lr', default=0.1, type=float
                         help='the leraning rate of UAP')
 
-    parser.add_argument('--prior', default='gauss',choices=['gauss','jigsaw',None],
+    parser.add_argument('--prior', default='gauss',choices=['gauss','jigsaw','None'], type='str',
                         help='the range prior of perturbations')
-    parser.add_argument('--prior_batch', default=1,
+    parser.add_argument('--prior_batch', default=1, type=int,
                         help='the batch size of prior')
-    parser.add_argument('--std', default=10,
+    parser.add_argument('--std', default=10, type=int,
                         help='initialize the standard deviation of gaussian noise')
-    parser.add_argument('--fre', default=1,
+    parser.add_argument('--fre', default=1, type=int,
                         help='initialize the frequency of jigsaw image')
-    parser.add_argument('--uap_path', default=None,
+    parser.add_argument('--uap_path', default=None, type=str,
                         help='the path of UAP')
-    parser.add_argument('--gauss_t0', default=400,
+    parser.add_argument('--gauss_t0', default=400, type=int,
                         help='the threshold to adjust the increasing rate of standard deviation(gauss)')
-    parser.add_argument('--gauss_gamma', default=10,
+    parser.add_argument('--gauss_gamma', default=10, type=int,
                         help='the step size(gauss)')
-    parser.add_argument('--jigsaw_t0', default=600,
+    parser.add_argument('--jigsaw_t0', default=600, type=int,
                         help='the threshold to adjust the increasing rate of standard deviation(jigsaw)')
-    parser.add_argument('--jigsaw_gamma', default=1,
+    parser.add_argument('--jigsaw_gamma', default=1, type=int,
                         help='the step size(jigsaw)')
-    parser.add_argument('--jigsaw_end_iter', default=4200,
+    parser.add_argument('--jigsaw_end_iter', default=4200, type=int,
                         help='the iterations which stop the increment of frequency(jigsaw)')
 
     #best set-up p_rate, n_rate, lambda, prior strategy t0 gamma in alexnet and vgg
@@ -78,7 +78,8 @@ def main():
 
     #best set-up p_rate, n_rate, lambda, prior strategy in resnet152 and googlenet
     #resnet152 0.3 0.2 1.5 [jigsaw for resnet152]
-    #googlnet 0.6 0.7 1.3 [jigsaw for googlenet]
+    #googlnet 0.65 0.2 1.0 [jigsaw for googlenet]
+    #note: Due to the random of artificial images, the result in the papper may be reproduced after repeated experiments with different seeds. 
 
 
     args = parser.parse_args()
@@ -93,8 +94,6 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     cudnn.benchmark = True
-
-    #for test
 
 
     # perpare for the surrogate model and target model
