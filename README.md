@@ -9,9 +9,10 @@ A data-free universal attack to craft the universal adversarial perturbation (UA
  - Feb 29, 2024: We updated the curriculum learning-based training strategy in the file `strategy.py` to provide a comprehensive illustration of the optimal experiment setup.
 
    Besides, the performance of TRM-UAP, as proposed in the paper, could be improved with further exploration of experimental hyperparameters.
+ - Apr 27, 2024: We updated the parameter set of the curriculum learning-based training strategy in the file `strategy.py` and revised the parameter set of the UAP training to help other researchers reproduce the paper results. We also uploaded the UAP with different models in the folder `perturbations`.
 ## Dependencies
 
-This repo is tested with pytorch<=1.12.0, python<=3.6.13.
+This repo is tested with pytorch=1.12.0, python=3.6.13.
 Install all python packages using following command:
 ```
 pip install -r requirements.txt
@@ -31,11 +32,11 @@ ImageNet validation set:
 
 ### 2. Training
 
-For example,run the following command:
+For example, run the following command:
 
 ```
 python train.py --surrogate_model vgg16 --target_model vgg19 --val_dataset_name imagenet 
-                --p_active True --n_active True --p_rate 0.8 --n_rate 0.7
+                --p_active --n_active --p_rate 0.8 --n_rate 0.7
 ```
 This will start a training to craft a UAP from the surrogate model vgg16 and attack the target model vgg19 on ImageNet with the positive and negative truncated activations correspondingly.
 
