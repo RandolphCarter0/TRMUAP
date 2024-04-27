@@ -182,8 +182,11 @@ def get_jigsaw(img,args,min=0,max=256,filter=False):
     img_batch = torch.zeros_like(img.cpu().detach()).squeeze(0)
 
     for j in range(args.prior_batch):
-        #googlenet used the set of args.fre+2 nad args.fre for the jigsaw image
-        ximg = shuffle(img_shape, args.fre, args.fre,min,max)
+        #googlenet used the set of args.fre+2 and args.fre for the jigsaw image
+        if args.surrogate_model == 'googlenet':
+            ximg = shuffle(img_shape, args.fre+2, args.fre, min,max)
+        else:
+            ximg = shuffle(img_shape, args.fre, args.fre,min,max)
 
         if filter == True:
             ximg = ximg.numpy()
@@ -224,7 +227,7 @@ def truncated_ratio_maximization(model, args, device, prior=False):
 
     xi_min = -args.epsilon
     xi_max = args.epsilon
-    args.std = 10
+    
 
 
     delta = (xi_min - xi_max) * torch.rand((1, 3, size, size), device=device) + xi_max
@@ -321,8 +324,13 @@ def truncated_ratio_maximization(model, args, device, prior=False):
 
         if sat_should_rescale:
             #if the UAP is saturated, then compress it
-            with torch.no_grad():
-                delta.data = delta.data / 2
+            if iter_since_last_best < args.patience_interval-1:
+                with torch.no_grad():
+                    delta.data = delta.data/2
+            else:
+                with torch.no_grad():
+                    delta.data = delta.data*0.8           
             sat_should_rescale = False
+
 
     return delta
