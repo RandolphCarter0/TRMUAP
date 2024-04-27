@@ -6,10 +6,8 @@ Code for the method [**\[ICCV 2023\] "TRM-UAP: Enhancing the Transferability of 
 A data-free universal attack to craft the universal adversarial perturbation (UAP) via truncated ratio maximization. This code depends on PyTorch.
 
 ## Update
- - Feb 29, 2024: We updated the curriculum learning-based training strategy in the file `strategy.py` to provide a comprehensive illustration of the optimal experiment setup.
-
-   Besides, the performance of TRM-UAP, as proposed in the paper, could be improved with further exploration of experimental hyperparameters.
- - Apr 27, 2024: We updated the parameter set of the curriculum learning-based training strategy in the file `strategy.py` and revised the parameter set of the UAP training to help other researchers reproduce the paper results. We also uploaded the UAP with different models in the folder `perturbations`.
+ - Feb 29, 2024: We updated the curriculum learning-based training strategy in the file `strategy.py` to provide a comprehensive illustration of the optimal experiment setup. Besides, the performance of TRM-UAP, as proposed in our paper, could be improved with further exploration of experimental hyperparameters.
+ - Apr 27, 2024: We updated the parameter set of the curriculum learning-based training strategy in the file `strategy.py` and revised the parameter set of the UAP training to help other researchers reproduce our paper's results. We also uploaded the pre-trained UAPs with different surrogate models in the folder `perturbations`.
 ## Dependencies
 
 This repo is tested with pytorch=1.12.0, python=3.6.13.
