@@ -22,13 +22,13 @@ def main():
     parser.add_argument('--val_dataset_name', default='imagenet',
                         help='The dataset to be used as test')
 
-    parser.add_argument('--delta_size', default=32,
+    parser.add_argument('--delta_size', default=224, type=int,
                         help='the size of delta')
-    parser.add_argument('--epsilon', default=10/255,
+    parser.add_argument('--epsilon', default=10/255, type=int,
                         help='the infinite norm limitation of UAP')
-    parser.add_argument('--seed', default=123,
+    parser.add_argument('--seed', default=123, type=int,
                         help='random seed')
-    parser.add_argument('--uap_path', default='perturbations/uap_vgg16.npy',
+    parser.add_argument('--uap_path', default='perturbations/uap_vgg16.npy', type=str,
                         help='the path of UAP stored')
     args = parser.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
