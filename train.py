@@ -47,10 +47,10 @@ def main():
                         help='the infinite norm limitation of UAP')
     parser.add_argument('--delta_size', default=224, type=int,
                         help='the size of delta')
-    parser.add_argument('--uap_lr', default=0.1, type=float
+    parser.add_argument('--uap_lr', default=0.1, type=float,
                         help='the leraning rate of UAP')
 
-    parser.add_argument('--prior', default='gauss',choices=['gauss','jigsaw','None'], type='str',
+    parser.add_argument('--prior', default='gauss',choices=['gauss','jigsaw','None'], type=str,
                         help='the range prior of perturbations')
     parser.add_argument('--prior_batch', default=1, type=int,
                         help='the batch size of prior')

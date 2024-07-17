@@ -4,6 +4,7 @@ import json
 import cv2
 import random
 import math
+import torch.utils
 import torchvision
 #import tensorflow as tf
 from skimage.transform import resize
@@ -102,11 +103,23 @@ def get_data_loader(dataset_name, batch_size=64, shuffle=False,analyze=False):
             dataset = DataLoader(val_dataset, batch_size=batch_size, shuffle=shuffle,
                                    num_workers=0)
             return dataset
-        train_dataset, test_dataset = torch.utils.data.random_split(val_dataset, [1000, 49000])
+        
+        total_images = len(val_dataset)
+        subset_size = 50000
+        assert subset_size <= total_images, "Subset size is larger than the dataset!"
+        subset_indices = random.sample(range(total_images), subset_size)
+        subset_dataset = torch.utils.data.Subset(val_dataset, subset_indices)
 
-        #just for test
-        test_dataset, _=torch.utils.data.random_split(test_dataset, [1000, 48000])
-        #####
+        N = int(subset_size*0.02)
+        split_sizes = [N, subset_size - N]
+        split_sizes_test = [N, subset_size[1] - N]
+        
+        train_dataset, test_dataset = torch.utils.data.random_split(subset_dataset, split_sizes)
+        #train_dataset, test_dataset = torch.utils.data.random_split(val_dataset, [1000, 49000])
+
+        test_dataset, _=torch.utils.data.random_split(test_dataset, split_sizes_test)
+        #test_dataset, _=torch.utils.data.random_split(test_dataset, [1000, 48000])
+        
 
         train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=shuffle,
                                    num_workers=0)
